@@ -1,0 +1,345 @@
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  background: #ecf0f1;
+  color: #333;
+  font-family: Lato, sans-serif;
+}
+
+.container {
+  display: block;
+  width: 500px;
+  margin: 50px auto 0;
+}
+
+ul  { margin: 0; padding: 0; }
+
+li * { float: left; }
+
+li, h3 {
+  clear: both;
+  list-style: none;
+}
+
+input, button, textarea { outline: none; }
+
+button {
+  background: none;
+  border: 0;
+  color: #888;
+  font-size: 15px;
+  width: 100px;
+  margin: 10px 0 0;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+button:hover { color: #333; }
+
+/* ── Section heading / form label ──────────────────────────────────────────── */
+h3,
+label[for='new-task'] {
+  color: #333;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 14px;
+}
+
+/* ── Generic text input ────────────────────────────────────────────────────── */
+input[type="text"] {
+  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+}
+input[type="text"]:focus { color: #333; }
+
+/* ── Add-task form ─────────────────────────────────────────────────────────── */
+.add-task-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+input#new-task {
+  flex: 1;
+  float: none;
+  width: auto;
+  min-width: 0;
+}
+
+input[type="date"] {
+  flex-shrink: 0;
+  width: 150px;
+  font-size: 14px;
+  padding: 10px 8px;
+  height: auto;
+  line-height: normal;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+input[type="date"]:focus { color: #333; }
+
+/* ── Due-soon threshold widget (form) ─────────────────────────────────────── */
+.due-soon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 3px;
+}
+
+.due-soon-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.due-soon-input-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.due-soon-unit {
+  font-size: 11px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+input#new-due-soon {
+  width: 54px;
+  text-align: center;
+  font-size: 16px;
+  padding: 8px 4px;
+  height: auto;
+  line-height: normal;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+  box-sizing: border-box;
+}
+input#new-due-soon:focus { color: #333; }
+
+#new-description {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 62px;
+  max-height: 180px;
+  resize: vertical;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+  margin-bottom: 2px;
+}
+#new-description:focus { color: #333; }
+
+.middle { text-align: center; }
+p > button:hover { color: #0FC57C; }
+
+/* ── Task list items ───────────────────────────────────────────────────────── */
+li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+}
+
+li > label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 237px;
+  padding: 0 0 0 11px;
+}
+
+li > input[type="text"] { width: 226px; }
+
+li > .delete:hover { color: #CF2323; }
+
+/* ── Due date badge ────────────────────────────────────────────────────────── */
+li > .due-date {
+  float: left;
+  clear: both;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 0 0 41px;
+  color: #bbb;
+}
+li > .due-date:empty   { display: none; }
+.due-date.overdue      { color: #CF2323; }
+.due-date.due-today    { color: #e67e22; }
+.due-date.due-soon     { color: #f0a500; }
+.due-date.due-future   { color: #27ae60; }
+
+/* ── Description toggle button ─────────────────────────────────────────────── */
+li > button.toggle-desc {
+  display: none;          /* hidden unless task has a description */
+  float: left;
+  clear: both;
+  width: auto;            /* override global button width: 100px */
+  margin: 5px 0 0 41px;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #bbb;
+  transition: color 0.15s;
+}
+li > button.toggle-desc:hover { color: #555; }
+
+/* Show toggle only when task has a description */
+li.has-description > button.toggle-desc { display: block; }
+
+/* ── Task description (hidden by default, revealed on toggle) ──────────────── */
+li > .task-description {
+  display: none;          /* collapsed by default */
+  float: left;
+  clear: both;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #999;
+  padding: 6px 0 0 41px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+li.desc-visible > .task-description { display: block; }
+
+/* ── Edit mode: date picker ────────────────────────────────────────────────── */
+li > input.edit-due-date {
+  display: none;
+  float: left;
+  clear: both;
+  margin: 8px 0 0 41px;
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+/* ── Edit mode: description textarea ──────────────────────────────────────── */
+li > textarea.edit-description {
+  display: none;
+  float: left;
+  clear: both;
+  margin: 8px 0 4px 41px;
+  width: calc(100% - 51px);
+  min-height: 60px;
+  max-height: 160px;
+  resize: vertical;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-family: Lato, sans-serif;
+  color: #888;
+  box-sizing: border-box;
+}
+li > textarea.edit-description:focus { color: #333; }
+
+/* ── Edit mode: due-soon number input (floats next to date picker) ──────────── */
+li > .edit-due-soon-label {
+  display: none;
+  float: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #aaa;
+  margin: 15px 0 0 5px;
+}
+
+li > .edit-due-soon-unit {
+  display: none;
+  float: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #aaa;
+  margin: 15px 0 0 5px;
+}
+
+li > input.edit-due-soon {
+  display: none;
+  float: left;
+  width: 46px;
+  height: auto;
+  line-height: normal;
+  margin: 8px 0 0 4px;
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-family: Lato, sans-serif;
+  color: #888;
+  box-sizing: border-box;
+}
+li > input.edit-due-soon:focus { color: #333; }
+
+/* ── editMode toggles ──────────────────────────────────────────────────────── */
+ul li input[type=text]                { display: none; }
+ul li.editMode input[type=text]       { display: block; }
+ul li.editMode label                  { display: none; }
+ul li.editMode .due-date              { display: none; }
+ul li.editMode .edit-due-date         { display: block; }
+ul li.editMode .task-description      { display: none; }
+ul li.editMode button.toggle-desc     { display: none; }
+ul li.editMode .edit-description      { display: block; }
+ul li.editMode .edit-due-soon-label   { display: block; }
+ul li.editMode input.edit-due-soon    { display: block; }
+ul li.editMode .edit-due-soon-unit    { display: block; }
+
+/* ── Completed ─────────────────────────────────────────────────────────────── */
+#completed-tasks label {
+  text-decoration: line-through;
+  color: #888;
+}
+#completed-tasks .task-description { color: #bbb; }
+#completed-tasks .due-date { color: #888; }
+#completed-tasks button.edit { display: none; }
+#completed-tasks button.delete { display: none; }

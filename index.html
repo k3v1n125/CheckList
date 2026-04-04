@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <label for="new-task">Current Tasks</label>
+
+    <!-- Title · Due date · Due-soon threshold on one row -->
+    <div class="add-task-row">
+      <input type="text" id="new-task" placeholder="Task title…" />
+      <input type="date" id="new-due-date" />
+      <div class="due-soon-wrap">
+        <span class="due-soon-label">Alert</span>
+        <div class="due-soon-input-row">
+          <input type="number" id="new-due-soon" value="4" min="0" max="90" />
+          <span class="due-soon-unit">days</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description below -->
+    <textarea id="new-description" placeholder="Description (optional)…"></textarea>
+
+    <p class="middle"><button>Add</button></p>
+
+    <h3>Todo</h3>
+    <ul id="incomplete-tasks"></ul>
+
+    <h3>Completed</h3>
+    <ul id="completed-tasks"></ul>
+  </div>
+
+  <script src="list.js"></script>
+</body>
+</html>
