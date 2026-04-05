@@ -2,6 +2,10 @@
 
 A simple checklist web app where tasks are stored to a local JSON file via an Express REST API.
 
+## Acknowledgements
+The original task checklist frontend is from GeeksForGeeks <br>
+https://www.geeksforgeeks.org/javascript/javascript-course-task-tracker-project/
+
 ## Project Structure
 
 ```
