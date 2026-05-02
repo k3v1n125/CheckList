@@ -2,6 +2,10 @@
 
 cd "$(dirname "$0")"   # ensure we're in the script's folder
 
+# Load nvm so npm/node are available when launched from Finder
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 npm install
 
 # Start server in background, capture its PID

@@ -79,6 +79,23 @@ app.delete('/tasks/:id', (req, res) => {
   res.status(204).send();
 });
 
+// GET /keepalive  — SSE stream; when the browser tab closes, shut down
+app.get('/keepalive', (req, res) => {
+  res.set({
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+  });
+  res.flushHeaders();
+  // Send a comment every 15 s to prevent proxy timeouts
+  const ping = setInterval(() => res.write(': ping\n\n'), 15000);
+  req.on('close', () => {
+    clearInterval(ping);
+    console.log('Browser window closed — shutting down server.');
+    process.exit(0);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

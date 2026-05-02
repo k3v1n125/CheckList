@@ -1,6 +1,9 @@
 // ── API base URL ───────────────────────────────────────────────────────────────
 const API = '/tasks';
 
+// ── Keepalive: shut down server when this tab/window closes ──────────────────
+new EventSource('/keepalive');
+
 // ── DOM refs ───────────────────────────────────────────────────────────────────
 const taskInput = document.getElementById('new-task');
 const dueDateInput = document.getElementById('new-due-date');
